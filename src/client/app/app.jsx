@@ -1,7 +1,15 @@
+/*
+ * @flow
+ */
+
 import React from 'react';
 import Box from './box.jsx';
 
-export default function App(props){
+type propTypes = {
+  msg:string
+}
+
+export default function App(props:propTypes) {
   const style = {
     color: 'gray',
     fontSize: 30
@@ -10,6 +18,7 @@ export default function App(props){
     <div>
       <p style = {style} >Test one</p>
       <Box msg = {props.msg}></Box>
+      <Box msg = {'how are'} ></Box>
     </div>
   );
 }

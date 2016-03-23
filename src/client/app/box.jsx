@@ -1,6 +1,16 @@
+/*
+ * @flow
+ */
 import React from 'react';
-export default function Box(props){
+type propTypes = {
+  msg:string
+};
+
+export default function Box(props:propTypes) {
   return (
-    <div> hello ! {props.msg}</div>
+    <div> hello ! [{props.msg}] </div>
   );
 }
+Box.propTypes = {
+  msg:React.PropTypes.string.isRequired
+};
