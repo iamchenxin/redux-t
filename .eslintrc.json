@@ -1,0 +1,30 @@
+{
+  "rules": {
+    "indent": [2, 2],
+    "quotes": [2, "single"],
+    "linebreak-style": [2, "unix"],
+    "semi": [2, "always"]
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "ecmaFeatures": { // eslint 1.x.x ecmaFeatures mustbe here
+    "jsx": true,
+    "modules": true,
+    "experimentalObjectRestSpread": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {  // eslint 2.x.x ecmaFeatures mustbe here
+  //    "ecmaVersion": 6,
+      "jsx": true,
+      "modules": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "plugins": ["react"],
+  "extends": ["eslint:recommended", "plugin:react/recommended"]
+}
