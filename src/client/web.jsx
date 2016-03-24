@@ -3,32 +3,34 @@ import ReactDOM from 'react-dom';
 import RedBox from 'redbox-react';
 
 const container = document.getElementById('container');
-const appModule = './app/app.jsx';
-import {store, msg} from './app/store/store.js';
+const appModule = './app/components/app.jsx';
+import {store} from './app/store/store.js';
 
 hotLoader(render)('你好');
 
+/*
 let unsubscribe = store.subscribe( () => {
   render(store.getState());
 });
 msg(unsubscribe);
+*/
 
 function render(txt='') {
   if (typeof txt != 'string') {
     txt = JSON.stringify(txt);
   }
-  const App = require('./app/app.jsx').default;
+  const App = require('./app/components/app.jsx').default;
   ReactDOM.render(
-    <App msg = {txt}></App>, container
+    <App context = { {store:store} }></App>, container
   );
 }
 
 function hotLoader(render) {
-  return function() {
+  return function(txt) {
     if (!module.hot) {
-      render();
+      render(txt);
     } else {
-      hotRender();
+      hotRender(txt);
       module.hot.accept(appModule, () => {
         setTimeout(hotRender);
       });
@@ -36,6 +38,7 @@ function hotLoader(render) {
   };
 
   function hotRender(txt) {
+    console.log(txt);
     try {
       render(txt);
     } catch (e) {
