@@ -2,9 +2,13 @@
 //import {noteRD} from '../reducers/noterd.js';
 const noteRD = require('../reducers/noterd.js').noteRD;
 const createStore = require('redux').createStore;
-//import { createStore } from 'redux';
+import { combineReducers } from 'redux';
 
-let store = createStore(noteRD);
+const noteAPP = combineReducers({
+  noteRD
+});
+
+let store = createStore(noteAPP);
 
 function msg(callback) {
   setTimeout( () => {

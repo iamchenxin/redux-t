@@ -4,15 +4,10 @@ import NoteList from './notelist.jsx';
 class TestCm extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      data:[]
-    };
-    console.dir(context);
+    this.state = {};
     this.context.store.subscribe(() => {
       const store = this.context.store;
-      this.setState({
-        data:store.getState()
-      });
+      this.setState(store.getState());
     });
   }
 
@@ -26,23 +21,29 @@ class TestCm extends React.Component {
       color: 'Gray'
     };
 
+    console.log('this.state.noteRD');
+    console.dir(this.state);
     const fontsize = MakeRandomNumber(10, 38);
-    const notelist = this.state.data.map( data => {
-      return {
-        note: data.text,
-        style: {
-          fontSize: fontsize(),
-          color: 'Orange'
-        }
-      };
-    });
     const data = {
-      notelist: notelist,
+      notelist: [],
       style: {
         listStyleType: 'square',
         color: 'Orange'
       }
     };
+    if(this.state.noteRD) {
+      const notelist =  this.state.noteRD.map( data => {
+        return {
+          note: data.text,
+          style: {
+            fontSize: fontsize(),
+            color: 'Orange'
+          }
+        };
+      });
+      data.notelist = notelist;
+    }
+
     console.log(this.state);
     return (
       <div>
