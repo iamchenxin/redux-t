@@ -3,6 +3,7 @@ import {addNote} from '../actions/addnote.js';
 
 class AddNote extends React.Component {
   constructor(props, context) {
+    console.log(props);
     super(props, context);
     this.input = null;
   }
@@ -17,10 +18,12 @@ class AddNote extends React.Component {
 
   add = (event) => {
     console.log(` input value = ${this.input.value}`);
-  //  console.dir(this.context.store);
-    this.context.store.dispatch(addNote(this.input.value));
+    this.props.onClick(this.input.value);
   }
 }
+AddNote.propTypes = {
+  onClick: React.PropTypes.function
+};
 AddNote.contextTypes = { store: React.PropTypes.object};
 
 export default AddNote;

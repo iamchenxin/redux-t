@@ -2,8 +2,8 @@
 
 import React from 'react';
 import Box from './box.jsx';
-import TestCm from './testcm.jsx';
-import AddNote from './addnote.jsx';
+import NoteListCT from '../container/notelist-ct.js';
+import AddNoteCT from '../container/addnote-ct.js';
 
 type propTypes = {
   context:mixed
@@ -27,8 +27,8 @@ class App extends React.Component {
       <div>
         <p style = {style} >Test one</p>
         <Box msg = {'how are'} ></Box>
-        <TestCm />
-        <AddNote />
+        <NoteListCT />
+        <AddNoteCT />
       </div>
     );
   }
