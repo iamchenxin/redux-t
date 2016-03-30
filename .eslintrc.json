@@ -30,7 +30,7 @@
     }
   },
   "plugins": ["react"],
-  "extends": ["eslint:recommended", "plugin:react/recommended", "./.estmp.js"]
+  "extends": ["eslint:recommended", "plugin:react/recommended", "./.eslintfb.js"]
 }
 //"./node_modules/fbjs-scripts/eslint/.eslintrc.js"
 //    "flow-vars/define-flow-type": 1,

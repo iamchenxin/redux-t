@@ -12,15 +12,6 @@ class TestCm extends React.Component {
   }
 
   render() {
-    const listStyle = {
-      listStyleType: 'square',
-      color: 'Orange'
-    };
-    const liStyle = {
-      fontSize: 38,
-      color: 'Gray'
-    };
-
     console.log('this.state.noteRD');
     console.dir(this.state);
     const fontsize = MakeRandomNumber(10, 38);
@@ -31,7 +22,7 @@ class TestCm extends React.Component {
         color: 'Orange'
       }
     };
-    if(this.state.noteRD) {
+    if (this.state.noteRD) {
       const notelist =  this.state.noteRD.map( data => {
         return {
           note: data.text,
