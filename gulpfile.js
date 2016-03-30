@@ -30,7 +30,35 @@ gulp.task('web-w', function() {
   webWebpackWatch();
 });
 
+gulp.task('clean-src', function() {
+  rmdir(['src/client/app']);
+});
+
 // ........functions .......
+var fs = require('fs');
+function rmdir(pathNames) {
+  pathNames.forEach(function(pathName) {
+    var stat = fs.statSync(pathName);
+    if ( stat.isFile()) {
+      rmfile(pathName);
+      console.log('delete file : ' + pathName);
+    }
+    if (stat.isDirectory()) {
+      var subPaths = fs.readdirSync(pathName)
+        .map(function(subPathName) {
+          return path.resolve(pathName, subPathName);
+        });
+      rmdir(subPaths);
+      fs.rmdirSync(pathName);
+      console.log('delete DIR : ' + pathName);
+    }
+  });
+
+  function rmfile(name) {
+    fs.unlinkSync(name);
+  }
+}
+
 function stdGulpTrans(src, dst) {
   var sourceRoot = path.join(__dirname, src);
   var srcPath = [src+'/**/*.js'];
